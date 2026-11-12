@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMEKSA FUN RUN 5K - OSIS SMKN 1 Bantaeng</title>
+    <meta name="description" content="Pendaftaran resmi SMEKSA Fun Run bersama OSIS SMKN 1 Bantaeng.">
+    
+    <!-- Google Fonts: Lexend -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           CSS VARIABLES & RESET
+           ========================================================================== */
+        :root {
+            --color-primary: #059669; /* Vibrant Green */
+            --color-primary-hover: #047857;
+            --color-primary-light: #d1fae5;
+            --color-dark-green: #064e3b;
+            --color-text-main: #1f2937; /* Dark Gray */
+            --color-text-muted: #6b7280;
+            --color-bg-body: #f9fafb;
+            --color-bg-white: #ffffff;
+            --color-border: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-float: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: var(--color-bg-body);
+            color: var(--color-text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-text-main);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* Buttons & Animations */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            gap: 8px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-bg-white);
+            box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4);
+        }
+
+        /* Press animation for all buttons */
+        .btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 10px rgba(5, 150, 105, 0.2);
+        }
+
+        /* Scroll Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay for grid items */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* ==========================================================================
+           NAVBAR
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            height: 90px; /* DITINGKATKAN AGAR LOGO BESAR BISA MUAT */
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* JARAK DITAMBAH */
+        }
+
+        .brand-logos {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* JARAK ANTAR LOGO DITAMBAH */
+        }
+
+        .brand-logos img {
+            height: 55px; /* UKURAN LOGO DIPERBESAR */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.6rem; /* UKURAN TEKS DIPERBESAR */
+            font-weight: 800;
+            color: var(--color-primary);
+        }
+        
+        .logo-text span {
+            color: var(--color-text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--color-text-main);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-text-main);
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           HERO SECTION & COUNTDOWN
+           ========================================================================== */
+        .hero {
+            padding-top: 90px; /* DISESUAIKAN DENGAN TINGGI NAVBAR BARU */
+            background-color: var(--color-bg-white);
+            position: relative;
+        }
+
+        .hero-banner-container {
+            width: 100%;
+            display: block;
+        }
+
+        .hero-banner-img {
+            width: 100%;
+            height: auto;
+            max-height: 75vh;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Floating Countdown */
+        .countdown-wrapper {
+            position: relative;
+            margin-top: -60px; /* Pull it up over the banner */
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+            margin-bottom: 60px;
+        }
+
+        .countdown-card {
+            background-color: var(--color-bg-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-float);
+            padding: 24px 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border: 1px solid var(--color-border);
+        }
+
+        .countdown-text p {
+            font-weight: 700;
+            color: var(--color-text-main);
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .countdown-text span {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: 16px;
+        }
+
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--color-primary-light);
+            color: var(--color-primary);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            min-width: 75px;
+        }
+
+        .time-box .num {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .time-box .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           SECTIONS LAYOUT
+           ========================================================================== */
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        .bg-white {
+            background-color: var(--color-bg-white);
+        }
+
+        /* --- KATEGORI (PRICING) --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+            border-color: var(--color-primary);
+        }
+
+        .pricing-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: var(--color-primary);
+        }
+
+        .pkg-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-text-main);
+            margin-bottom: 8px;
+        }
+
+        .pkg-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 24px;
+        }
+
+        .pkg-features {
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        .pkg-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--color-text-main);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .pkg-features li i {
+            color: var(--color-primary);
+            margin-top: 4px;
+        }
+
+        .pkg-features li.disabled {
+            color: var(--color-text-muted);
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* --- JADWAL LOMBA (TIMELINE) --- */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .time-badge {
+            background-color: var(--color-primary);
+            color: var(--color-bg-white);
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            height: fit-content;
+            min-width: 100px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+        }
+
+        .timeline-content p {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- FASILITAS (FACILITIES GRID) --- */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .facility-card {
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 40px 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .facility-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+        }
+
+        .facility-icon {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .facility-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* --- FAQ (ACCORDION) --- */
+        .faq-list {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        details {
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        details[open] {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        summary {
+            padding: 20px 24px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '\f067'; /* FontAwesome Plus */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--color-primary);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            content: '\f068'; /* FontAwesome Minus */
+        }
+
+        .faq-content {
+            padding: 0 24px 24px;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        footer {
+            background-color: var(--color-dark-green);
+            color: var(--color-bg-white);
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-bg-white);
+        }
+        
+        .footer-logo span {
+            color: #a7f3d0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-bg-white);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .social-link i {
+            font-size: 1.25rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================================
+           MEDIA QUERIES (RESPONSIVE)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .countdown-card {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .pricing-grid {
+                max-width: 600px;
+                grid-template-columns: 1fr;
+            }
+            .facilities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 90px; /* DISESUAIKAN DENGAN TINGGI NAVBAR BARU */
+                left: 0;
+                width: 100%;
+                background: var(--color-bg-white);
+                padding: 24px;
+                box-shadow: var(--shadow-md);
+                border-top: 1px solid var(--color-border);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            
+            .brand-logos img {
+                height: 40px; /* LOGO DI HP JUGA DIPERBESAR */
+            }
+            .logo-text {
+                font-size: 1.25rem; /* TEKS DI HP DIPERBESAR */
+            }
+
+            .hero-banner-img {
+                min-height: 250px;
+            }
+            .countdown-wrapper {
+                margin-top: -40px;
+                padding: 0 16px;
+            }
+            .time-box {
+                min-width: 65px;
+                padding: 10px;
+            }
+            .time-box .num {
+                font-size: 1.5rem;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .time-badge {
+                width: fit-content;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+            .social-links {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 20px;
+            }
+            .social-link {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo-container">
+                <div class="brand-logos">
+                    <img src="smeksa%20run%20images/smk.jpg" alt="Logo SMK">
+                    <img src="smeksa%20run%20images/osis.png" alt="Logo OSIS">
+                </div>
+                <div class="logo-text">SMEKSA FUN RUN</div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#kategori">Kategori</a>
+                <a href="#jadwal">Jadwal</a>
+                <a href="#fasilitas">Fasilitas</a>
+                <a href="#faq">FAQ</a>
+                <!-- Link form yang diminta -->
+                <a href="https://forms.gle/htS8qveXq1GgGJQN6" target="_blank" class="btn btn-primary">Daftar Sekarang</a>
+            </div>
+            <button class="hamburger" id="hamburgerBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-banner-container animate-on-scroll">
+            <img src="smeksa%20run%20images/gemini.jpeg" alt="Banner SMEKSA Run" class="hero-banner-img">
+        </div>
+    </header>
+
+    <!-- FLOATING COUNTDOWN SECTION -->
+    <div class="countdown-wrapper animate-on-scroll delay-1">
+        <div class="countdown-card">
+            <div class="countdown-text">
+                <p>Event akan dimulai dalam:</p>
+                <span>SMEKSA FUN RUN</span>
+            </div>
+            <div class="countdown-timer">
+                <div class="time-box">
+                    <span class="num" id="cd-days">00</span>
+                    <span class="label">Hari</span>
+                </div>
+                <div class="time-box">
+                    <span class="num" id="cd-hours">00</span>
+                    <span class="label">Jam</span>
+                </div>
+                <div class="time-box">
+                    <span class="num" id="cd-minutes">00</span>
+                    <span class="label">Menit</span>
+                </div>
+                <div class="time-box">
+                    <span class="num" id="cd-seconds">00</span>
+                    <span class="label">Detik</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KATEGORI PENDAFTARAN -->
+    <section id="kategori" class="section-padding">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Kategori Pendaftaran</h2>
+            <p class="section-subtitle animate-on-scroll">Pilih paket yang sesuai untuk Anda. Mari sehat bersama!</p>
+            
+            <div class="pricing-grid">
+                <!-- Card 1 -->
+                <div class="pricing-card featured animate-on-scroll delay-1">
+                    <div class="pkg-name">PACK 1</div>
+                    <div class="pkg-price">Rp 185.000</div>
+                    <ul class="pkg-features">
+                        <li><i class="fa-solid fa-check"></i> Jersey Lari (S, M, L, XL, XXL)</li>
+                        <li><i class="fa-solid fa-check"></i> Medali Finisher</li>
+                        <li><i class="fa-solid fa-check"></i> Nomor Dada (BIB)</li>
+                        <li><i class="fa-solid fa-check"></i> Gelang Undian Doorprize</li>
+                    </ul>
+                    <!-- Tombol Solid Hijau -->
+                    <a href="https://forms.gle/htS8qveXq1GgGJQN6" target="_blank" class="btn btn-primary" style="width: 100%;">
+                        DAFTAR SEKARANG
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="pricing-card animate-on-scroll delay-2">
+                    <div class="pkg-name">PACK 2</div>
+                    <div class="pkg-price">Rp 95.000</div>
+                    <ul class="pkg-features">
+                        <li><i class="fa-solid fa-check"></i> Medali Finisher</li>
+                        <li><i class="fa-solid fa-check"></i> Nomor Dada (BIB)</li>
+                        <li><i class="fa-solid fa-check"></i> Gelang Undian Doorprize</li>
+                        <li class="disabled"><i class="fa-solid fa-xmark"></i> Tanpa Jersey Lari</li>
+                    </ul>
+                    <!-- Tombol Solid Hijau disamakan dengan Pack 1 -->
+                    <a href="https://forms.gle/htS8qveXq1GgGJQN6" target="_blank" class="btn btn-primary" style="width: 100%;">
+                        DAFTAR SEKARANG
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JADWAL LOMBA -->
+    <section id="jadwal" class="section-padding bg-white">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Jadwal Lomba</h2>
+            <p class="section-subtitle animate-on-scroll">Minggu, 20 Desember 2026 - Lapangan Utama SMKN 1 Bantaeng</p>
+            
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="time-badge">05:30</div>
+                    <div class="timeline-content">
+                        <h3>Open Gate & Registrasi Ulang</h3>
+                        <p>Peserta tiba di lokasi, persiapan barisan, dan penitipan barang (Drop Bag).</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll delay-1">
+                    <div class="time-badge">06:00</div>
+                    <div class="timeline-content">
+                        <h3 style="color: var(--color-primary);">Flag Off (Mulai Lari)</h3>
+                        <p>Pelepasan resmi seluruh pelari SMEKSA Fun Run 5km.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll delay-2">
+                    <div class="time-badge">07:30</div>
+                    <div class="timeline-content">
+                        <h3>Finish & Refreshment</h3>
+                        <p>Pengalungan medali bagi para finisher, pengambilan air minum dan snack.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll delay-3">
+                    <div class="time-badge">08:00</div>
+                    <div class="timeline-content">
+                        <h3>Hiburan & Pengundian Doorprize</h3>
+                        <p>Penampilan panggung, senam bersama, dan pengundian puluhan hadiah menarik.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll delay-4">
+                    <div class="time-badge">10:00</div>
+                    <div class="timeline-content">
+                        <h3>Penutupan Acara</h3>
+                        <p>Sesi foto bersama seluruh panitia dan peserta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FASILITAS PESERTA -->
+    <section id="fasilitas" class="section-padding">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Fasilitas Peserta</h2>
+            <p class="section-subtitle animate-on-scroll">Keuntungan yang akan Anda dapatkan sebagai peserta SMEKSA Run 2026.</p>
+
+            <div class="facilities-grid">
+                <div class="facility-card animate-on-scroll delay-1">
+                    <i class="fa-solid fa-id-badge facility-icon"></i>
+                    <h4>Nomor BIB</h4>
+                </div>
+                
+                <div class="facility-card animate-on-scroll delay-2">
+                    <i class="fa-solid fa-shirt facility-icon"></i>
+                    <h4>Jersey</h4>
+                </div>
+
+                <div class="facility-card animate-on-scroll delay-3">
+                    <i class="fa-solid fa-medal facility-icon"></i>
+                    <h4>Medali</h4>
+                </div>
+                
+                <div class="facility-card animate-on-scroll delay-4">
+                    <i class="fa-solid fa-gift facility-icon"></i>
+                    <h4>Door Prize</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="section-padding bg-white">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Pertanyaan Umum (FAQ)</h2>
+            <p class="section-subtitle animate-on-scroll">Informasi penting seputar pendaftaran dan event.</p>
+
+            <div class="faq-list">
+                <details class="animate-on-scroll">
+                    <summary>Siapa saja yang boleh ikut?</summary>
+                    <div class="faq-content">
+                        Event SMEKSA Fun Run ini terbuka untuk umum. Baik Anda siswa SMKN 1 Bantaeng, alumni, maupun masyarakat umum dari segala kalangan usia diperbolehkan mendaftar.
+                    </div>
+                </details>
+                
+                <details class="animate-on-scroll delay-1">
+                    <summary>Kapan dan di mana Race Pack bisa diambil?</summary>
+                    <div class="faq-content">
+                        Pengambilan Race Pack (Jersey, BIB, dll) dapat dilakukan pada H-2 dan H-1 sebelum hari pelaksanaan (Jumat & Sabtu). Lokasi berada di Sekretariat OSIS SMKN 1 Bantaeng.
+                    </div>
+                </details>
+
+                <details class="animate-on-scroll delay-2">
+                    <summary>Bagaimana metode pembayaran pendaftaran?</summary>
+                    <div class="faq-content">
+                        Pembayaran ditransfer langsung ke rekening resmi yang tertera pada Google Form. Bukti transfer *wajib* diunggah sebagai bukti sah pendaftaran Anda.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content animate-on-scroll">
+                <div class="footer-logo">SMEKSA RUN 2026</div>
+                <p style="color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto;">
+                    Penyelenggara: OSIS SMKN 1 Bantaeng
+                </p>
+                <div class="social-links">
+                    <a href="https://instagram.com/smkn1bantaeng" target="_blank" class="social-link">
+                        <i class="fa-brands fa-instagram"></i>
+                        @officialsmkn1bantaeng
+                    </a>
+                    <a href="https://instagram.com/mpkosis.smkn1btg" target="_blank" class="social-link">
+                        <i class="fa-brands fa-instagram"></i>
+                        @officialmpkosissmeksaone
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom animate-on-scroll delay-1">
+                &copy; 2026 OSIS SMK Negeri 1 Bantaeng. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navLinks = document.getElementById('navLinks');
+        const hamburgerIcon = hamburgerBtn.querySelector('i');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-xmark');
+            } else {
+                hamburgerIcon.classList.remove('fa-xmark');
+                hamburgerIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburgerIcon.classList.remove('fa-xmark');
+                hamburgerIcon.classList.add('fa-bars');
+            });
+        });
+
+        // 2. Countdown Timer Logic (Target Date: Dec 20, 2026)
+        const eventDate = new Date("2026-01-01T01:00:00").getTime();
+
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById('cd-days').innerText = "00";
+                document.getElementById('cd-hours').innerText = "00";
+                document.getElementById('cd-minutes').innerText = "00";
+                document.getElementById('cd-seconds').innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+        }, 1000);
+
+        // 3. Scroll Animations (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Trigger when 15% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Stop observing once animated to prevent repeating
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 4. Accordion Logic (Only one open)
+        const detailsElements = document.querySelectorAll('details');
+        detailsElements.forEach(targetDetail => {
+            targetDetail.addEventListener('click', () => {
+                detailsElements.forEach(detail => {
+                    if (detail !== targetDetail) {
+                        detail.removeAttribute('open');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
